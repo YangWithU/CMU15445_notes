@@ -1,0 +1,1 @@
+select primary_title, premiered, runtime_minutes || ' (mins)' from titles where genres like '%Sci-Fi%' order by runtime_minutes desc LIMIT 10;
