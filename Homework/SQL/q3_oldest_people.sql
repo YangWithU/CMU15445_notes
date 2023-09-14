@@ -1,15 +1,15 @@
-select
+SELECT
     name,
     CASE
-        WHEN died NOT NULL THEN died - born
+        WHEN died IS NOT NULL THEN died - born
         ELSE 2022 - born
-    END
-
-FROM people
-WHERE born >= 1900
+    END AS chosen_age
+FROM
+    people
+WHERE
+    born >= 1900
 ORDER BY
-    CASE
-        WHEN died NOT NULL THEN died - born
-        ELSE 2022 - born
-    END
-DESC LIMIT 1;
+    chosen_age DESC,
+    name ASC
+LIMIT
+    20;

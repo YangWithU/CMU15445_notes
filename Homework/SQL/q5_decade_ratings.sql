@@ -1,5 +1,5 @@
 SELECT
-    CAST(premiered / 100 AS TEXT) || 's' AS time,
+    CAST(premiered / 10 * 10 AS TEXT) || 's' AS time,
     ROUND(AVG(rating), 2) AS avg_rating,
     MAX(rating) AS mx_rating,
     MIN(rating) AS mn_rating,
