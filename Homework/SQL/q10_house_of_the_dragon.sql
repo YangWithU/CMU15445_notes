@@ -25,7 +25,7 @@ WITH
         FROM
             get_title
     ),
-    RECURSIVE dfs_concatenate As (
+    dfs_concatenate As (
         SELECT
             num_seq,
             ak_title
@@ -36,14 +36,16 @@ WITH
         UNION ALL
         SELECT
             mark_number.num_seq,
-            cur.ak_title || ',' || mark_number.ak_title
+            cur.ak_title || ', ' || mark_number.ak_title
         FROM
             mark_number
             JOIN dfs_concatenate cur ON mark_number.num_seq = cur.num_seq + 1
     )
 SELECT
-    *
+    ak_title
 FROM
     dfs_concatenate
 ORDER BY
-    num_seq;
+    num_seq DESC
+LIMIT
+    1;
